@@ -16,6 +16,10 @@ class PostController extends Controller
         return redirect()->route('index')->with('message', 'Post Create Success');
     }
 
+    function show(Post $post){
+        return view('public.post.show',compact('post'));
+    }
+
     function edit(Post $post){
         return view('public.post.edit',compact('post'));
     }

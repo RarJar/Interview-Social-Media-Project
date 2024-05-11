@@ -10,9 +10,9 @@ Route::controller(IndexController::class)->group(function(){
 });
 
 Route::resource('posts',PostController::class)->names([
-    'index' => 'post.index',
     'create' => 'post.create',
     'store' => 'post.store',
+    'show' => 'post.show',
     'edit' => 'post.edit',
     'update' => 'post.update',
     'destroy' => 'post.destroy',

@@ -13,8 +13,9 @@
         <p class="text-gray-800">{{ $data->title }}</p>
         <p class="text-gray-800">{{ $data->body }}</p>
     </div>
-    <div class="flex items-center justify-between text-gray-500">
-        <div class="flex items-center space-x-3">
+    <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+            <a href="{{ route('post.show', $data->id) }}">Read more</a>
             @can('post-manage', $data)
                 <a href="{{ route('post.edit', $data->id) }}" class="text-blue-500">Edit</a>
                 <form action="{{ route('post.destroy', $data->id) }}" method="POST" class="text-red-500 cursor-pointer">
