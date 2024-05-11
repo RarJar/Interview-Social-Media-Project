@@ -3,20 +3,8 @@
         <div class="flex justify-between px-4 mx-auto max-w-screen-xl ">
             <article
                 class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
-                <header class="mb-4 lg:mb-6 not-format">
-                    <address class="flex items-center mb-6 not-italic">
-                        <div class="inline-flex items-center mr-3 text-sm text-gray-900">
-                            <img class="mr-4 w-16 h-16 rounded-full"
-                                src="https://flowbite.com/docs/images/people/profile-picture-2.jpg" alt="Jese Leos">
-                            <div>
-                                <a class="text-xl font-bold text-gray-900">{{ $post->user?->name }}</a>
-                                <p class="text-base text-gray-500 dark:text-gray-400">
-                                    {{ $post->user?->created_at->diffForHumans() }}</p>
-                            </div>
-                        </div>
-                    </address>
-                    <h1 class="mb-3 font-bold text-4xl font-extrabold leading-tight">{{ $post->title }}</h1>
-                </header>
+                <x-molecules.profile-header :data="$post" />
+                <h1 class="mb-3 font-semibold text-4xl leading-tight">{{ $post->title }}</h1>
                 <p>{{ $post->body }}</p>
                 <section class="not-format">
                     <div class="flex justify-between items-center mb-6">
@@ -35,25 +23,9 @@
                             Post comment
                         </button>
                     </form>
-                    <article class="p-6 mb-6 text-base bg-white rounded-lg >
-                        <footer class="flex
-                        justify-between items-center mb-2">
-                        <div class="flex items-center">
-                            <p class="inline-flex items-center mr-3 font-semibold text-sm text-gray-900">
-                                <img class="mr-2 w-6 h-6 rounded-full"
-                                    src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
-                                    alt="Michael Gough">Michael Gough
-                            </p>
-                            <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate datetime="2022-02-08"
-                                    title="February 8th, 2022">Feb. 8, 2022</time></p>
-                        </div>
-                        <p>Very straight-to-point article. Really worth time reading. Thank you! But tools are just the
-                            instruments for the UX designers. The knowledge of the design tools are as important as the
-                            creation of the design strategy.</p>
-                        <div class="flex items-center mt-4 space-x-4">
-                            <button type="button" Reply </button>
-                        </div>
-                    </article>
+                    @foreach ($post->comments as $comment)
+                        <x-molecules.comment-card :comment="$comment" />
+                    @endforeach
                 </section>
             </article>
         </div>

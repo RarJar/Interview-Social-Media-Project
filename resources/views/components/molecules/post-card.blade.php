@@ -1,14 +1,7 @@
 @props(['data'])
 
 <div class="bg-white p-8 shadow-md rounded-lg m-3">
-    <a href="/profile/{{ $data->user?->username }}" class="flex items-center mb-2 space-x-2">
-        <img src="https://icon2.cleanpng.com/20180523/wxj/kisspng-businessperson-computer-icons-avatar-clip-art-lattice-5b0508dc2ee812.2252011515270566041921.jpg"
-            class="w-10 h-10 rounded-full">
-        <div class="flex flex-col">
-            <span class="text-gray-800 font-semibold">{{ $data->user?->name }}</span>
-            <span class="text-gray-500 text-sm">Posted {{ $data->created_at->diffForHumans() }}</span>
-        </div>
-    </a>
+    <x-molecules.profile-header :data="$data" />
     <div class="mb-4">
         <p class="text-gray-800">{{ $data->title }}</p>
         <p class="text-gray-800">{{ $data->body }}</p>
@@ -25,8 +18,8 @@
                 </form>
             @endcan
         </div>
-        <button class="flex justify-center items-center gap-2 px-2 hover:bg-gray-50 rounded-full p-1">
-            <svg width="22px" height="22px" viewBox="0 0 24 24" class="w-5 h-5 fill-current"
+        <button class="flex justify-center items-center gap-2 px-2 rounded-full p-1">
+            <svg width="22px" height="22px" viewBox="0 0 24 24" class="w-5 h-5 fill-current text-gray-600"
                 xmlns="http://www.w3.org/2000/svg">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -36,7 +29,7 @@
                     </path>
                 </g>
             </svg>
-            <span>2 Comments</span>
+            <span>{{ $data->comments->count() }} {{ $data->comments->count() > 1 ? 'Comments' : 'Comment' }}</span>
         </button>
     </div>
 </div>
