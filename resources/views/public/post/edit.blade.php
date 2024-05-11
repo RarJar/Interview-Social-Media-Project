@@ -1,6 +1,8 @@
 <x-app-layout>
     <form action="{{ route('post.update', $post->id) }}" method="POST">
         @csrf
+        @method('PUT')
+
         <h3>Edit Form</h3>
         <input type="text" name="title" value="{{ $post->title }}">
         @error('title')

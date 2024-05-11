@@ -17,7 +17,11 @@
         <div class="flex items-center space-x-3">
             @can('post-manage', $data)
                 <a href="{{ route('post.edit', $data->id) }}" class="text-blue-500">Edit</a>
-                <a href="{{ route('post.destroy', $data->id) }}" class="text-red-500">Delete</a>
+                <form action="{{ route('post.destroy', $data->id) }}" method="POST" class="text-red-500 cursor-pointer">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">Delete</button>
+                </form>
             @endcan
         </div>
         <button class="flex justify-center items-center gap-2 px-2 hover:bg-gray-50 rounded-full p-1">

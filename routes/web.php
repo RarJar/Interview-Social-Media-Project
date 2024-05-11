@@ -9,13 +9,14 @@ Route::controller(IndexController::class)->group(function(){
     Route::get('/','index')->name('index');
 });
 
-Route::controller(PostController::class)->group(function(){
-    Route::get('/post/create','create')->name('post.create');
-    Route::post('/post/store','store')->name('post.store');
-    Route::get('/post/edit/{post}','edit')->name('post.edit');
-    Route::post('/post/update/{post}','update')->name('post.update');
-    Route::get('/post/destroy/{post}', 'destroy')->name('post.destroy');
-});
+Route::resource('posts',PostController::class)->names([
+    'index' => 'post.index',
+    'create' => 'post.create',
+    'store' => 'post.store',
+    'edit' => 'post.edit',
+    'update' => 'post.update',
+    'destroy' => 'post.destroy',
+]);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
