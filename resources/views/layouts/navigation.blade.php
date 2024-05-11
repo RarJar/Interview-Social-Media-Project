@@ -17,13 +17,13 @@
             </div>
             <div class="flex items-center gap-x-1">
                 @auth
-                    {{-- <a class="text-black" href="{{ route('blog.create') }}">
-                        <button>Create Blog</button>
+                    <a class="rounded-lg bg-gray-800 py-2 px-4 text-center font-sans text-xs font-bold uppercase text-white"
+                        href="{{ route('post.create') }}">
+                        <button>Create Post</button>
                     </a>
-                    <a href="{{ route('profile', auth()->user()?->username) }}"><img
-                            src="https://icon2.cleanpng.com/20180523/wxj/kisspng-businessperson-computer-icons-avatar-clip-art-lattice-5b0508dc2ee812.2252011515270566041921.jpg"
+                    <a><img src="https://icon2.cleanpng.com/20180523/wxj/kisspng-businessperson-computer-icons-avatar-clip-art-lattice-5b0508dc2ee812.2252011515270566041921.jpg"
                             class="w-10 h-10 rounded-full">
-                    </a> --}}
+                    </a>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit"
