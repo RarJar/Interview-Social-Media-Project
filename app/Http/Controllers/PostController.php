@@ -13,7 +13,7 @@ class PostController extends Controller
 
     function store(PostRequest $request){
         Post::create($request->all());
-        return redirect()->route('index')->with('message', 'Post Create Success');
+        return redirect()->route('index')->with('success', 'Post Create Success');
     }
 
     function show(Post $post){
@@ -26,11 +26,11 @@ class PostController extends Controller
 
     function update(PostRequest $request,Post $post){
         $post->update($request->all());
-        return redirect()->route('index')->with('message', 'Post Update Success');
+        return redirect()->route('index')->with('success', 'Post Update Success');
     }
 
     function destroy(Post $post){
         $post->delete();
-        return back()->with('message', 'Post Delete Success');
+        return back()->with('success', 'Post Delete Success');
     }
 }

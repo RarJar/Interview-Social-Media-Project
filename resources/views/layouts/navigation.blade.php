@@ -7,25 +7,16 @@
         </a>
         <div class="flex items-center gap-x-1">
             @auth
-                <a class="rounded-lg bg-gray-800 py-2 px-4 text-center font-sans text-xs font-bold uppercase text-white"
-                    href="{{ route('post.create') }}">
-                    <button>Create Post</button>
-                </a>
+                <x-atoms.link route="{{ route('post.create') }}" class="bg-gray-800 uppercase" content="Create Post" />
                 <a><img src="https://icon2.cleanpng.com/20180523/wxj/kisspng-businessperson-computer-icons-avatar-clip-art-lattice-5b0508dc2ee812.2252011515270566041921.jpg"
                         class="w-10 h-10 rounded-full">
                 </a>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit"
-                        class="rounded-lg bg-red-500 py-2 px-4 text-center font-sans text-xs font-bold uppercase text-white">
-                        Log Out
-                    </button>
+                    <x-atoms.button type="submit" class="bg-red-500 uppercase" content="Log Out" />
                 </form>
             @else
-                <a href="/login"
-                    class="rounded-lg bg-black py-2 px-4 text-center font-sans text-xs font-bold uppercase text-white">
-                    <span>Login</span>
-                </a>
+                <x-atoms.link route="/login" class="bg-gray-800 uppercase" content="Login" />
             @endauth
         </div>
     </div>

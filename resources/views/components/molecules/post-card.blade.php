@@ -15,13 +15,13 @@
     </div>
     <div class="flex items-center justify-between">
         <div class="flex items-center space-x-4">
-            <a href="{{ route('post.show', $data->id) }}">Read more</a>
+            <x-atoms.link route="{{ route('post.show', $data->id) }}" class="bg-gray-800" content="Read more" />
             @can('post-manage', $data)
-                <a href="{{ route('post.edit', $data->id) }}" class="text-blue-500">Edit</a>
+                <x-atoms.link route="{{ route('post.edit', $data->id) }}" class="bg-blue-500" content="Edit" />
                 <form action="{{ route('post.destroy', $data->id) }}" method="POST" class="text-red-500 cursor-pointer">
                     @csrf
                     @method('DELETE')
-                    <button type="submit">Delete</button>
+                    <x-atoms.button type="submit" class="bg-red-500" content="Delete" />
                 </form>
             @endcan
         </div>
