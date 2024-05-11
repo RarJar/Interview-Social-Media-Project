@@ -1,44 +1,24 @@
 @props(['data'])
 
 <div class="bg-white p-8 shadow-md rounded-lg m-3">
-    <div class="flex items-center justify-between mb-4">
-        <a href="/profile/{{ $data->user?->username }}" class="flex items-center space-x-2">
-            <img src="https://icon2.cleanpng.com/20180523/wxj/kisspng-businessperson-computer-icons-avatar-clip-art-lattice-5b0508dc2ee812.2252011515270566041921.jpg"
-                class="w-8 h-8 rounded-full">
-            <div>
-                <p class="text-gray-800 font-semibold">{{ $data->user?->name }}</p>
-                <p class="text-gray-500 text-sm">Posted {{ $data->created_at->diffForHumans() }}</p>
-            </div>
-        </a>
-        <div class="text-gray-500 cursor-pointer">
-            <button class="hover:bg-gray-50 rounded-full p-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="7" r="1" />
-                    <circle cx="12" cy="12" r="1" />
-                    <circle cx="12" cy="17" r="1" />
-                </svg>
-            </button>
+    <a href="/profile/{{ $data->user?->username }}" class="flex items-center mb-2 space-x-2">
+        <img src="https://icon2.cleanpng.com/20180523/wxj/kisspng-businessperson-computer-icons-avatar-clip-art-lattice-5b0508dc2ee812.2252011515270566041921.jpg"
+            class="w-10 h-10 rounded-full">
+        <div class="flex flex-col">
+            <span class="text-gray-800 font-semibold">{{ $data->user?->name }}</span>
+            <span class="text-gray-500 text-sm">Posted {{ $data->created_at->diffForHumans() }}</span>
         </div>
-    </div>
-    <!-- Message -->
+    </a>
     <div class="mb-4">
         <p class="text-gray-800">{{ $data->title }}</p>
         <p class="text-gray-800">{{ $data->body }}</p>
     </div>
-    @can('post-manage', $data)
-        <a href="{{ route('post.edit', $data->id) }}" class="text-blue-500">Edit</a>
-        <a href="{{ route('post.destroy', $data->id) }}" class="text-red-500">Delete</a>
-    @endcan
     <div class="flex items-center justify-between text-gray-500">
-        <div class="flex items-center space-x-2">
-            <button class="flex justify-center items-center gap-2 px-2 hover:bg-gray-50 rounded-full p-1">
-                <svg class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path
-                        d="M12 21.35l-1.45-1.32C6.11 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-4.11 6.86-8.55 11.54L12 21.35z" />
-                </svg>
-                <span>42 Likes</span>
-            </button>
+        <div class="flex items-center space-x-3">
+            @can('post-manage', $data)
+                <a href="{{ route('post.edit', $data->id) }}" class="text-blue-500">Edit</a>
+                <a href="{{ route('post.destroy', $data->id) }}" class="text-red-500">Delete</a>
+            @endcan
         </div>
         <button class="flex justify-center items-center gap-2 px-2 hover:bg-gray-50 rounded-full p-1">
             <svg width="22px" height="22px" viewBox="0 0 24 24" class="w-5 h-5 fill-current"
