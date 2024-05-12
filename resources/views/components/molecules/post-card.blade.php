@@ -4,11 +4,11 @@
     <x-molecules.profile-header :data="$data" />
     <div class="mb-4">
         <p class="text-gray-800">{{ $data->title }}</p>
-        <p class="text-gray-800">{{ $data->body }}</p>
+        <p class="text-gray-800 line-clamp-4">{{ $data->body }}</p>
     </div>
     <div class="flex items-center justify-between">
-        <div class="flex items-center space-x-4">
-            <x-atoms.link route="{{ route('post.show', $data->id) }}" class="bg-gray-800" content="Read more" />
+        <div class="flex items-center space-x-1 md:space-x-3">
+            <x-atoms.link route="{{ route('post.show', $data->id) }}" class="bg-gray-800" content="Read" />
             @can('post-manage', $data)
                 <x-atoms.link route="{{ route('post.edit', $data->id) }}" class="bg-blue-500" content="Edit" />
                 <form action="{{ route('post.destroy', $data->id) }}" method="POST" class="text-red-500 cursor-pointer">
@@ -18,7 +18,7 @@
                 </form>
             @endcan
         </div>
-        <button class="flex justify-center items-center gap-2 px-2 rounded-full p-1">
+        <button class="flex justify-center items-center gap-1">
             <svg width="22px" height="22px" viewBox="0 0 24 24" class="w-5 h-5 fill-current text-gray-600"
                 xmlns="http://www.w3.org/2000/svg">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>

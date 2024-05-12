@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
@@ -24,16 +25,25 @@ class PostController extends Controller
     }
 
     function edit(Post $post){
-        return view('public.post.edit',compact('post'));
+        if(Gate::allows('post-manage', $post)){
+            return view('public.post.edit',compact('post'));
+        }
+        return abort(403, 'Unauthorized action.');
     }
 
     function update(PostRequest $request,Post $post){
-        $post->update($request->all());
-        return redirect()->route('index')->with('success', 'Post Update Success');
+        if(Gate::allows('post-manage', $post)){
+            $post->update($request->all());
+            return redirect()->route('index')->with('success', 'Post Update Success');
+        }
+        return abort(403, 'Unauthorized action.');
     }
 
     function destroy(Post $post){
-        $post->delete();
-        return back()->with('success', 'Post Delete Success');
+        if(Gate::allows('post-manage', $post)){
+            $post->delete();
+            return back()->with('success', 'Post Delete Success');
+        }
+        return abort(403, 'Unauthorized action.');
     }
 }
