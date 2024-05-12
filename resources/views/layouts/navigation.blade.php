@@ -7,10 +7,11 @@
         </a>
         <div class="flex items-center gap-x-1">
             @auth
-                <x-atoms.link route="{{ route('post.create') }}" class="bg-gray-800 uppercase" content="Create Post" />
-                <a><img src="https://icon2.cleanpng.com/20180523/wxj/kisspng-businessperson-computer-icons-avatar-clip-art-lattice-5b0508dc2ee812.2252011515270566041921.jpg"
+                <a href="{{ route('profile.index', auth()->user()?->id) }}"><img
+                        src="https://icon2.cleanpng.com/20180523/wxj/kisspng-businessperson-computer-icons-avatar-clip-art-lattice-5b0508dc2ee812.2252011515270566041921.jpg"
                         class="w-10 h-10 rounded-full">
                 </a>
+                <x-atoms.link route="{{ route('post.create') }}" class="bg-gray-800 uppercase" content="Create Post" />
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <x-atoms.button type="submit" class="bg-red-500 uppercase" content="Log Out" />
