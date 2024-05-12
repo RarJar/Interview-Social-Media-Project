@@ -1,6 +1,5 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}" class="space-y-4">
-        @csrf
+    <x-molecules.form method="POST" action="{{ route('register') }}" class="space-y-4">
         <x-atoms.input-label class="text-center text-xl font-semibold mb-3" value="Register" />
         <div>
             <x-atoms.input-label for="name" :value="__('Name')" />
@@ -28,5 +27,5 @@
             <x-atoms.link route="{{ route('login') }}" class="underline !text-gray-800" content="Already registered?" />
             <x-atoms.button type="submit" class="bg-gray-800 uppercase" content="Register" />
         </div>
-    </form>
+    </x-molecules.form>
 </x-guest-layout>

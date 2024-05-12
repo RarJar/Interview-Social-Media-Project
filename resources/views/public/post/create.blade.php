@@ -1,6 +1,5 @@
 <x-app-layout>
-    <form action="{{ route('post.store') }}" method="POST" class="mx-3 md:mx-52 mt-10 space-y-2">
-        @csrf
+    <x-molecules.form action="{{ route('post.store') }}" method="POST" class="mx-3 md:mx-52 mt-10 space-y-2">
         <x-atoms.input-label class="text-center text-xl font-semibold mb-3" value="Create Form" />
         <div>
             <x-atoms.input-label for="title" :value="__('Title')" />
@@ -15,5 +14,5 @@
         </div>
 
         <x-atoms.button type="submit" class="w-full bg-gray-800 uppercase" content="Create" />
-    </form>
+    </x-molecules.form>
 </x-app-layout>

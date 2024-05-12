@@ -5,17 +5,15 @@
     <p class="comment-edit-form-{{ $comment->id }}">{{ $comment->text }}</p>
     @if (auth()->user()?->id == $comment->user_id)
     @endif
-    @can('comment-update', $comment)
-        <form action="{{ route('comment.update', $comment->id) }}" method="POST"
-            class="mb-6 hidden comment-edit-form-{{ $comment->id }}">
-            @csrf
-            @method('PUT')
 
+    @can('comment-update', $comment)
+        <x-molecules.form action="{{ route('comment.update', $comment->id) }}" method="POST" customMethod="PUT"
+            class="mb-6 hidden comment-edit-form-{{ $comment->id }}">
             <x-atoms.form-textarea name="text" placeholder="Write a comment...">
                 {{ old('text', $comment->text) }}
             </x-atoms.form-textarea>
             <x-atoms.button type="submit" class="bg-gray-800" content="Update comment" />
-        </form>
+        </x-molecules.form>
     @endcan
 
     <div class="flex space-x-2 mt-1">

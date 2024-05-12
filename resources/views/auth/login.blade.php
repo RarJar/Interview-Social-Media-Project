@@ -1,6 +1,5 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('login') }}" class="space-y-4">
-        @csrf
+    <x-molecules.form method="POST" action="{{ route('login') }}" class="space-y-4">
         <x-atoms.input-label class="text-center text-xl font-semibold mb-3" value="Login" />
         <div>
             <x-atoms.input-label for="email" :value="__('Email')" />
@@ -17,5 +16,5 @@
                 content="Create new account?" />
             <x-atoms.button type="submit" class="bg-gray-800 uppercase" content="Login" />
         </div>
-    </form>
+    </x-molecules.form>
 </x-guest-layout>
