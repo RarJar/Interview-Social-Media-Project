@@ -3,7 +3,7 @@
     <div class="flex items-center justify-between text-blue-gray-900">
         <a href="/"
             class="mr-4 block cursor-pointer py-1.5 font-sans text-xl font-medium leading-relaxed text-inherit antialiased">
-            Social-Media
+            Social Media
         </a>
         <div class="flex items-center gap-x-1">
             @auth
