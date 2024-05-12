@@ -9,7 +9,7 @@
         <x-atoms.button type="submit" class="bg-gray-800" content="Post comment" />
     </form>
     @forelse ($post->comments as $comment)
-        <x-molecules.comment-card :comment="$comment" />
+        <x-molecules.comment-card :comment="$comment" :post="$post" />
     @empty
         <x-atoms.empty-data data="comment" />
     @endforelse
