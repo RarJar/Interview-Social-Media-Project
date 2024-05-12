@@ -3,7 +3,7 @@
         @csrf
         <x-atoms.input-label class="text-center text-xl font-semibold mb-3" value="Login" />
         <div>
-            <x-atoms.input-labe!text-mdl for="email" :value="__('Email')" />
+            <x-atoms.input-label for="email" :value="__('Email')" />
             <x-atoms.form-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" />
         </div>
 
