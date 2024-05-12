@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 
 Route::controller(IndexController::class)->group(function(){
@@ -17,6 +18,10 @@ Route::resource('posts',PostController::class)->names([
     'update' => 'post.update',
     'destroy' => 'post.destroy',
 ]);
+
+Route::controller(CommentController::class)->group(function(){
+    Route::post('/comments/store/{post}','store')->name('comment.store');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

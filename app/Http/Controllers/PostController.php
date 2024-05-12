@@ -17,6 +17,9 @@ class PostController extends Controller
     }
 
     function show(Post $post){
+        $post->load(['comments' => function ($query) {
+            $query->latest();
+        }]);
         return view('public.post.show',compact('post'));
     }
 

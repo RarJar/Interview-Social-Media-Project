@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class IndexController extends Controller
 {
     function index(){
-        $posts = Post::latest()->get();
+        $posts = Post::with('comments')->latest()->get();
         return view('index',compact('posts'));
     }
 }

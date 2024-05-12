@@ -5,6 +5,6 @@
         class="w-10 h-10 rounded-full">
     <div class="flex flex-col">
         <span class="text-gray-800 font-semibold">{{ $data->user?->name }}</span>
-        <span class="text-gray-500 text-sm">Posted {{ $data->created_at->diffForHumans() }}</span>
+        <span class="text-gray-600 text-sm">{{ $data->created_at->diffForHumans() }}</span>
     </div>
 </a>
