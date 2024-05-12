@@ -20,7 +20,9 @@ Route::resource('posts',PostController::class)->names([
 ]);
 
 Route::controller(CommentController::class)->group(function(){
-    Route::post('/comments/store/{post}','store')->name('comment.store');
+    Route::post('/comments/{post}/store','store')->name('comment.store');
+    Route::put('/comments/{comment}/update','update')->name('comment.update');
+    Route::delete('/comments/{comment}/destroy','destroy')->name('comment.destroy');
 });
 
 Route::middleware('auth')->group(function () {

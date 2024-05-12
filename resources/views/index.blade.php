@@ -3,9 +3,7 @@
         @forelse ($posts as $post)
             <x-molecules.post-card :data="$post" />
         @empty
-            <div class="col">
-                <h3>There is no data</h3>
-            </div>
+            <x-atoms.empty-data data="post" />
         @endforelse
     </div>
 </x-app-layout>
