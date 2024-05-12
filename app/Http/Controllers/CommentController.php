@@ -16,18 +16,14 @@ class CommentController extends Controller
     }
 
     function update(CommentRequest $request,Comment $comment){
-        if(Gate::allows('comment-update', $comment)){
-            $comment->update($request->all());
-            return back()->with('success', 'Comment Update Success');
-        }
-        return abort(403, 'Unauthorized action.');
+        Gate::authorize('comment-update', $comment);
+        $comment->update($request->all());
+        return back()->with('success', 'Comment Update Success');
     }
 
     function destroy(Comment $comment){
-        if(Gate::allows('comment-destroy',[$comment,$comment->post])){
-            $comment->delete();
-            return back()->with('success', 'Comment Delete Success');
-        }
-        return abort(403, 'Unauthorized action.');
+        Gate::authorize('comment-destroy',[$comment,$comment->post]);
+        $comment->delete();
+        return back()->with('success', 'Comment Delete Success');
     }
 }
