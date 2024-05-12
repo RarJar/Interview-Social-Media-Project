@@ -1,4 +1,6 @@
 <x-app-layout>
+    @section('title', 'Social Media | Post Create')
+    
     <x-molecules.form action="{{ route('post.store') }}" method="POST" class="mx-3 md:mx-52 mt-10 space-y-2">
         <x-atoms.input-label class="text-center text-xl font-semibold mb-3" value="Create Form" />
         <div>

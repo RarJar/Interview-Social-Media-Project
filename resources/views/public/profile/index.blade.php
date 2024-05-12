@@ -1,4 +1,6 @@
 <x-app-layout>
+    @section('title', 'Social Media | Profile')
+    
     <div class="mx-3 md:mx-24">
         <div class="font-semibold text-lg py-5 mb-3 text-center">
             <h1>Name - {{ $user->name }}</h1>

@@ -29,11 +29,13 @@
         @endcan
     </div>
 </article>
-<script>
-    function toggleEditForm(commentId) {
-        var commentEditForms = document.querySelectorAll('.comment-edit-form-' + commentId);
-        commentEditForms.forEach(function(form) {
-            form.classList.toggle('hidden');
-        });
-    }
-</script>
+@section('custom-js')
+    <script>
+        function toggleEditForm(commentId) {
+            var commentEditForms = document.querySelectorAll('.comment-edit-form-' + commentId);
+            commentEditForms.forEach(function(form) {
+                form.classList.toggle('hidden');
+            });
+        }
+    </script>
+@endsection

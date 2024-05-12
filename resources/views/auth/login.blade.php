@@ -1,4 +1,6 @@
 <x-guest-layout>
+    @section('title', 'Social Media | Login')
+
     <x-molecules.form method="POST" action="{{ route('login') }}" class="space-y-4">
         <x-atoms.input-label class="text-center text-xl font-semibold mb-3" value="Login" />
         <div>

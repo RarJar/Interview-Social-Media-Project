@@ -1,4 +1,6 @@
 <x-app-layout>
+    @section('title', 'Social Media | Post Detail')
+
     <main class="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white antialiased">
         <div class="flex justify-between px-4 mx-auto max-w-screen-xl ">
             <article
