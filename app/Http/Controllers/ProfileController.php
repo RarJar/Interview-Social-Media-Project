@@ -8,6 +8,9 @@ class ProfileController extends Controller
 {
     public function index(User $user)
     {
+        $user = $user->load(['posts' => function ($query) {
+            $query->latest();
+        }, 'comments']);
         return view('public.profile.index',compact('user'));
     }
 }
